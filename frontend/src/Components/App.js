@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import Menu from './Ui/Menu'
+import {Route} from 'react-router-dom';
+import Menu from './Ui/Menu';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Menu />
+        <Route exact path="/" render={() =>(
+          <Menu activeMenu="all" categories="" />
+        )}/>
+
+        <Route path="/category" render={() =>(
+          <Menu activeMenu="all" categories="" />
+        )}/>
+
+        <Route path="/post" render={() =>(
+          <Menu activeMenu="all" categories="" />
+        )}/>
       </div>
     );
   }

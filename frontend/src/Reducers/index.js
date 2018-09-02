@@ -1,20 +1,7 @@
-import { combineReducers } from 'redux'
-import {ADD_POST, REMOVE_POST} from '../Actions';
+import { combineReducers } from 'redux';
 
-function post(state = {}, action){
-    switch(action.type){
-        case ADD_POST:
-            return;
-    }
-    return state
-}
+import categoryReducer from './categoryReducer';
+import postReducer from './postReducer';
 
-function category(state = {}, action){
-    switch(action.type){
-        case ADD_POST:
-            return;
-    }
-    return state
-}
 
-export default combineReducers({post, category});
+export default combineReducers({postReducer, categoryReducer});
