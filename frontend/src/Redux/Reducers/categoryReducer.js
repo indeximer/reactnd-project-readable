@@ -1,8 +1,8 @@
-import {ADD_POST, REMOVE_POST} from '../Actions/post';
+import {GET_CATEGORIES} from '../Actions/types';
 
 export default (state = {}, action) => {
     switch(action.type){
-        case ADD_POST:
+        case GET_CATEGORIES:
             return;
     }
     return state

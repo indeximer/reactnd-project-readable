@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
-import Menu from './Ui/Menu';
+import PostList from './Post/PostList';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Route exact path="/" render={() =>(
-          <Menu activeMenu="all" categories="" />
+            <PostList/>
         )}/>
 
-        <Route path="/category" render={() =>(
-          <Menu activeMenu="all" categories="" />
+        <Route path="/categories/:category" render={() =>(
+          <div></div>
         )}/>
 
         <Route path="/post" render={() =>(
-          <Menu activeMenu="all" categories="" />
+          <div></div>
         )}/>
       </div>
     );
