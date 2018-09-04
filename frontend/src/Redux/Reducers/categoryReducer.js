@@ -1,13 +1,36 @@
 import {GET_CATEGORIES} from '../Actions/types';
 
-export default (state = {}, action) => {
+const initialState = {
+    categories:[
+        {
+            name:'React',
+            path:'react'
+        },
+        {
+            name:'Redux',
+            path:'redux'
+        },
+        {
+            name:'Android',
+            path:'android'
+        },
+        {
+            name:'Linux',
+            path:'linux'
+        }
+    ]
+}
+
+const categoryReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_CATEGORIES:
             return{
                 ...state,
-                categories: action.categories
+                categories: [...state.categories, action.categories]
             };
         default:
             return state;
     }
 }
+
+export default categoryReducer;
