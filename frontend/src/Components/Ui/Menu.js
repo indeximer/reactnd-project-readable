@@ -22,8 +22,8 @@ const Menu = (props) => {
     );
 }
 
-const mapStateToProps = (state) => {
-    return { categories: state.categoryReducer.categories };
+const mapStateToProps = (store) => {
+    return { categories: store.categoryReducer.categories };
 };
 
 export default connect(mapStateToProps)(Menu);

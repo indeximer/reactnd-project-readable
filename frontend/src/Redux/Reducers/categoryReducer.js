@@ -1,24 +1,7 @@
 import {GET_CATEGORIES} from '../Actions/types';
 
 const initialState = {
-    categories:[
-        {
-            name:'React',
-            path:'react'
-        },
-        {
-            name:'Redux',
-            path:'redux'
-        },
-        {
-            name:'Android',
-            path:'android'
-        },
-        {
-            name:'Linux',
-            path:'linux'
-        }
-    ]
+    categories:[]
 }
 
 const categoryReducer = (state = initialState, action) => {
