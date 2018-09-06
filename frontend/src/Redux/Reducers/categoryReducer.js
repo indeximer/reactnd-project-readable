@@ -1,32 +1,15 @@
-import {GET_CATEGORIES} from '../Actions/types';
+import {RECEIVE_CATEGORIES} from '../Actions/types';
 
 const initialState = {
-    categories:[
-        {
-            name:'React',
-            path:'react'
-        },
-        {
-            name:'Redux',
-            path:'redux'
-        },
-        {
-            name:'Android',
-            path:'android'
-        },
-        {
-            name:'Linux',
-            path:'linux'
-        }
-    ]
+    categories:[]
 }
 
 const categoryReducer = (state = initialState, action) => {
     switch(action.type){
-        case GET_CATEGORIES:
+        case RECEIVE_CATEGORIES:
             return{
                 ...state,
-                categories: [...state.categories, action.categories]
+                categories: action.categories
             };
         default:
             return state;
