@@ -21,8 +21,6 @@ class Menu extends Component {
         const {categories} = this.props;
         const activeMenu = this.state.activeMenu;
 
-        console.log(activeMenu);
-
         return(
             <div>
                 <ul id="slide-out" className="sidenav sidenav-fixed">
@@ -33,7 +31,7 @@ class Menu extends Component {
                     <li><a className="subheader">Categories</a></li>
                     <li className={activeMenu === 'all' ? 'active':''}><Link onClick={() => this.updateActiveMenu('all')} className="waves-effect" to='/'>All posts</Link></li>
                     {categories.map((category) => (
-                        <li  key={category.path} className={activeMenu === category.path ? 'active':''}><Link onClick={() => this.updateActiveMenu(category.path)} className="waves-effect" to={`./categories/${category.path}`}>{category.name}</Link></li>
+                        <li  key={category.path} className={activeMenu === category.path ? 'active':''}><Link onClick={() => this.updateActiveMenu(category.path)} className="waves-effect" to={`/categories/${category.path}`}>{category.name}</Link></li>
                     ))}
                     
                 </ul>

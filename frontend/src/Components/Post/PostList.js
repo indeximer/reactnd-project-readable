@@ -1,16 +1,23 @@
 import React, {Component} from 'react';
-import PostLi from './PostLi';
+import Post from './Post';
+import { connect } from "react-redux";
+import {getPostsAsync} from '../../Redux/Actions/post';
 
 class ListPosts extends Component{
 
-
+    componentDidMount(){
+        this.props.dispatch(getPostsAsync());
+    }
 
     render(){
         return(
             <div className="container">
                 <div className="row">
                     <ul className="list-posts col s12">
-                        <PostLi/>
+
+                        {this.props.posts.map((post,key) => (
+                            <Post key={key} {...post}/>
+                        ))}
                     </ul>
                 </div>
             </div>
@@ -18,4 +25,9 @@ class ListPosts extends Component{
     }
 }
 
-export default ListPosts;
+
+const mapStateToProps = (store) => {
+    return {posts: store.postReducer.posts};
+};
+  
+export default connect(mapStateToProps)(ListPosts);
