@@ -8,7 +8,7 @@ class Menu extends Component {
     }
 
     componentDidMount(){
-        const active =this.props.match.params.category || 'all';
+        const active = this.props.match.params.category || 'all';
         this.updateActiveMenu(active);
         
     }

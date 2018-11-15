@@ -1,12 +1,21 @@
-import {RECEIVE_POSTS} from './types';
+import {RECEIVE_POSTS, RECEIVE_CATEGORY_POSTS} from './types';
+
 import * as PostAPI from '../../Utils/PostAPI';
 
-export const getPosts = (posts) => ({
+export const getPosts = (payload) => ({
     type: RECEIVE_POSTS,
-    posts
+    payload
 })
-
 export const getPostsAsync = () => (dispatch) =>(
     PostAPI.getAll()
-        .then((posts) => dispatch(getPosts(posts)))
+        .then(posts => dispatch(getPosts(posts)))
+)
+
+export const getPostsByCategory = (payload) => ({
+    type: RECEIVE_CATEGORY_POSTS,
+    payload
+})
+export const getPostsByCategoryAsync = (category) => (dispatch) =>(
+    PostAPI.getPostsByCategory(category)
+        .then(posts => dispatch(getPostsByCategory(posts)))
 )

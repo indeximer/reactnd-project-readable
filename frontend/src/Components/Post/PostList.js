@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import Post from './Post';
 import { connect } from "react-redux";
-import {getPostsAsync} from '../../Redux/Actions/post';
+import {getPostsAsync, getPostsByCategoryAsync} from '../../Redux/Actions/post';
 
 class ListPosts extends Component{
 
     componentDidMount(){
-        this.props.dispatch(getPostsAsync());
+        const category = this.props.match ? this.props.match.params.category : false
+        console.log(category)
+        if(category){
+           this.props.dispatch(getPostsByCategoryAsync(category))
+        }else{
+            this.props.dispatch(getPostsAsync());
+        }
     }
 
     render(){
@@ -27,6 +33,7 @@ class ListPosts extends Component{
 
 
 const mapStateToProps = (store) => {
+        console.log(store.postReducer)
     return {posts: store.postReducer.posts};
 };
   

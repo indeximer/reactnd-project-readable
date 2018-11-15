@@ -24,7 +24,7 @@ class App extends Component {
         <Route path="/categories/:category" render={(props) =>(
           <div>
             <Menu {...props} />
-            <PostList />
+            <PostList {...props} />
           </div>
         )}/>
 
