@@ -14,7 +14,7 @@ const postReducer = (state = initialState, action) => {
         case RECEIVE_CATEGORY_POSTS:
             return{
                 ...state,
-                posts: [...action.payload]
+                posts: action.payload
             }
         default:
             return state;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
-import Menu from './Ui/Menu';
+import {Route, withRouter} from 'react-router-dom';
 import PostList from './Post/PostList';
 import { connect } from "react-redux";
 import {getCategoriesAsync} from '../Redux/Actions/category';
@@ -15,17 +14,11 @@ class App extends Component {
     return (
       <div className="App">
         <Route exact path="/" render={(props) =>(
-          <div>
-            <Menu {...props} />
-            <PostList />
-          </div>
+            <PostList {...props} />
         )}/>
 
-        <Route path="/categories/:category" render={(props) =>(
-          <div>
-            <Menu {...props} />
+        <Route exact path="/categories/:category" render={(props) =>(
             <PostList {...props} />
-          </div>
         )}/>
 
         <Route path="/post" render={() =>(
@@ -40,4 +33,4 @@ const mapStateToProps = (store) => {
   return {categories: store.categoryReducer.categories};
 };
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App))

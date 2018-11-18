@@ -7,6 +7,7 @@ body {
   padding-left: 300px;
 }
 .text-right{text-align: right;}
+.text-center{text-align: center;}
 .px-0,
 .row .col.px-0{
   padding-left: 0;

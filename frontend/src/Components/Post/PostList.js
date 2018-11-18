@@ -1,40 +1,46 @@
-import React, {Component} from 'react';
-import Post from './Post';
-import { connect } from "react-redux";
-import {getPostsAsync, getPostsByCategoryAsync} from '../../Redux/Actions/post';
+import React, {Component} from 'react'
+import Post from './Post'
+import { connect } from 'react-redux'
+import Main from '../Main'
+import {getPostsAsync, getPostsByCategoryAsync} from '../../Redux/Actions/post'
 
 class ListPosts extends Component{
 
     componentDidMount(){
-        const category = this.props.match ? this.props.match.params.category : false
-        console.log(category)
-        if(category){
-           this.props.dispatch(getPostsByCategoryAsync(category))
-        }else{
-            this.props.dispatch(getPostsAsync());
+        this.props.dispatch(getPostsAsync())
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.match.params.category !== nextProps.match.params.category) {
+            this.props.dispatch(getPostsByCategoryAsync(nextProps.match.params.category))
         }
     }
 
     render(){
-        return(
-            <div className="container">
-                <div className="row">
-                    <ul className="list-posts col s12">
+        const category = this.props.match.params.category || 'all'
+        const posts = this.props.posts
+        console.log(category)
 
-                        {this.props.posts.map((post,key) => (
-                            <Post key={key} {...post}/>
-                        ))}
-                    </ul>
+        return(
+            <Main activeMenu={category}>
+                <div className="container">
+                    <div className="row">
+                        <ul className="list-posts col s12">
+                            {posts.map((post,key) => (
+                                <Post key={key} {...post}/>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        );
+            </Main>
+        )
     }
 }
 
 
 const mapStateToProps = (store) => {
         console.log(store.postReducer)
-    return {posts: store.postReducer.posts};
-};
+    return {posts: store.postReducer.posts}
+}
   
-export default connect(mapStateToProps)(ListPosts);
+export default connect(mapStateToProps)(ListPosts)
